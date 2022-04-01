@@ -1,27 +1,21 @@
 <template>
   <div
     v-if="productStore.cartProducts.length"
-    class="flex flex-col overflow-y-scroll justify-center items-center"
+    class="flex w-screen flex-col md:flex-row overflow-y-scroll justify-center items-center md:items-start"
   >
-    <div class="w-4/5 mr-2.5">
+    <div class="w-4/5 sm:w-3/5 md:w-2/5 mr-2.5">
       <div
         v-for="(product, index) in productStore.cartProducts"
-        class="flex justify-center items-center h-1/5 shadow-md p-2.5 mb-2.5"
+        class="flex justify-around items-center h-1/5 shadow-md p-2.5 mb-2.5"
         :key="index"
       >
-        <div class="flex justify-evenly h-full">
-          <img :src="product.image" class="h-6/7 w-1/3 mr-1" alt="product" />
-          <div class="flex flex-col">
-            <h3>{{ product.title }}</h3>
+        <!-- <div class="flex justify-evenly h-full"> -->
+          <img :src="product.image" class="h-6/7 md:h-1/2 w-1/4 md:w-1/5 mr-1" alt="product" />
+          <div class="flex flex-col w-2/4">
+            <h3 class="truncate w-6/7">{{ product.title }}</h3>
             <div class="flex">
               <p
-                class="m-1"
-                :style="{
-                  width: '25px',
-                  height: '20px',
-                  backgroundColor: '#388e3c',
-                  color: 'white',
-                }"
+                class="m-1 w-6 h-5 bg-green-700 text-white text-center"
               >
                 {{ product.rating.rate }}
               </p>
@@ -51,7 +45,7 @@
               </div>
             </div>
           </div>
-        </div>
+        <!-- </div> -->
         <img
           src="https://img.icons8.com/small/16/000000/filled-trash.png"
           height="20px"
@@ -61,7 +55,7 @@
         />
       </div>
     </div>
-    <div class="w-4/5 border-2 p-2.5 shadow-md">
+    <div class="w-4/5 sm:w-3/5 md:w-1/5 border-2 p-2.5 shadow-md">
       <p class="my-1">Price Details</p>
       <div class="flex my-1 justify-between">
         <p>Price({{ productStore.cartProducts.length }} items)</p>
@@ -99,7 +93,7 @@ export default {
         )
         .toFixed(2);
     });
-    console.log(productStore.cartProducts.length);
+    // console.log(productStore.cartProducts.length);
     return {
       productStore,
       totalPrice,

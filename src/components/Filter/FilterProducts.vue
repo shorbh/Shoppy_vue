@@ -1,9 +1,9 @@
 <template>
   <!-- <div class="side-bar vw-20 vh-75"> -->
-  <form class="w-full">
-    <div class="flex justify-between items-center text-3xl my-2">
+  <form class="w-full overflow-y-auto">
+    <div class="flex justify-between items-center text-2xl my-2">
       <h2>Filters</h2>
-      <p class="reset-filter" @click="resetFilters()">Clear All</p>
+      <p class="reset-filter cursor-pointer active:text-purple-500" @click="resetFilters()">Clear All</p>
     </div>
     <dl>
       <dt class="text-2xl my-2">Category</dt>
@@ -26,11 +26,11 @@
       </dd>
     </dl>
     <div class="text-2xl my-2">Price</div>
-    <div class="flex justify-around">
+    <div class="flex justify-around flex-col md:flex-row">
       <input
         placeholder="Min"
         name="min-price"
-        class="w-1/5 outline-none text-center text-black"
+        class="w-1/2 md:1/5 outline-none text-center text-black"
         type="number"
         min="1"
         v-model="filterProduct.minprice"
@@ -38,7 +38,7 @@
       <input
         placeholder="Max"
         name="max-price"
-        class="w-1/5 outline-none text-center text-black"
+        class="w-1/2 md:1/5 outline-none text-center text-black"
         type="number"
         min="1"
         v-model="filterProduct.maxprice"

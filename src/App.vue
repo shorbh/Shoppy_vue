@@ -1,6 +1,12 @@
 <template>
-  <router-view></router-view>
-  <!-- <div>hello</div> -->
+  <template v-if="productStore.productInfo.length">
+    <router-view></router-view>
+  </template>
+  <template v-else>
+    <div class="h-screen w-screen flex justify-center items-center text-3xl">
+      Loading...
+    </div>
+  </template>
 </template>
 
 <script>
@@ -16,8 +22,13 @@ export default {
         "resize",
         () => (productStore.windowWidth = window.innerWidth)
       );
-      productStore.getProducts();
+
     });
+    productStore.getProducts();
+
+    return {
+      productStore,
+    }
   },
 };
 </script>

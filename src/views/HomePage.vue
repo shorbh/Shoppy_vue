@@ -3,12 +3,12 @@
     <nav-bar />
     <div
       class="flex absolute top-12 bottom-0"
-      v-if="productStore.windowWidth > 700"
+      v-if="productStore.windowWidth > 643"
     >
-      <div class="p-5 flex flex-col bg-purple-600 text-white w-1/4">
+      <div class="p-5 flex flex-col bg-purple-600 text-white w-2/5 md:w-1/3 lg:w-1/4">
         <FilterProducts />
       </div>
-      <div class="w-3/4">
+      <div class="w-3/4 overflow-y-auto">
         <product-list />
       </div>
     </div>

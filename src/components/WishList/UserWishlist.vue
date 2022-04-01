@@ -1,19 +1,19 @@
 <template>
   <div
     v-if="productStore.favProducts.length"
-    class="w-3/4 my-0 mx-auto overflow-y-scroll h-auto"
+    class="w-5/6 md:w-3/4 my-0 mx-auto overflow-y-auto h-auto"
   >
     <h3>My Wishlist</h3>
 
     <div
       v-for="(product, index) in productStore.favProducts"
-      class="flex justify-center items-center h-1/5 shadow-md p-2.5 mb-2.5"
+      class="flex justify-around items-center w-full md:w-3/4 h-48 shadow-md p-2.5 m-2.5 mx-auto"
       :key="index"
     >
-      <div class="flex justify-center items-center h-full">
-        <img :src="product.image" class="h-full w-1/4 mr-1" alt="product" />
-        <div class="flex flex-col">
-          <h3>{{ product.title }}</h3>
+      <!-- <div class="flex justify-center items-center h-full"> -->
+        <img :src="product.image" class="h-full w-1/4 md:w-1/6 mr-1" alt="product" />
+        <div class="flex flex-col w-2/4">
+          <h3 class="truncate w-6/7">{{ product.title }}</h3>
           <div class="flex">
             <p
               class="m-1"
@@ -30,7 +30,7 @@
           </div>
           <h3 class="m-1">₹{{ product.price }}</h3>
         </div>
-      </div>
+      <!-- </div> -->
       <img
         src="https://img.icons8.com/small/16/000000/filled-trash.png"
         height="20px"

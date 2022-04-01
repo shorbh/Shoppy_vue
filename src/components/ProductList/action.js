@@ -21,14 +21,14 @@ export const useActionProductList = defineStore("productList.action", () => {
     state.position = state.position - 6;
   }
   let addToCart = (product) => {
-    console.log("add to cart");
+    // console.log("add to cart");
     const state = useState();
     state.cartProducts = [...state.cartProducts, product];
   };
   let remToCart = (product) => {
     const state = useState();
     state.cartProducts = [
-      ...state.cartProducts.filter(({ id }) => id !== product.id),
+      ...state.cartProducts.filter(({ id }) => id !== product.id)
     ];
   };
   let addToFav = (product) => {
@@ -38,7 +38,7 @@ export const useActionProductList = defineStore("productList.action", () => {
   let remToFav = (product) => {
     const state = useState();
     state.favProducts = [
-      ...state.favProducts.filter((prod) => prod.id !== product.id),
+      ...state.favProducts.filter((prod) => prod.id !== product.id)
     ];
   };
   return {
@@ -48,6 +48,6 @@ export const useActionProductList = defineStore("productList.action", () => {
     addToCart,
     remToCart,
     addToFav,
-    remToFav,
+    remToFav
   };
 });

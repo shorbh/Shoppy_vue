@@ -1,34 +1,34 @@
 <template>
   <div class="z-10 sticky top-0 bg-purple-600 h-12 p-2.5 flex justify-between">
     <img
-      v-if="productStore.windowWidth < 450"
+      v-if="productStore.windowWidth <= 643"
       src="../../assets/menu.png"
-      class=""
+      class="cursor-pointer active:text-purple-500"
       @click="productStore.toggleSideBar()"
     />
     <router-link to="/"
-      ><p v-if="productStore.windowWidth > 450">eshop</p></router-link
+      ><p class="mr-1 text-2xl" v-if="productStore.windowWidth > 643">eshop</p></router-link
     >
-    <input
-      v-model="search"
-      type="text"
-      class="w-4/5 sm:w-96 md:w-3/4 outline-none rounded"
-    />
-    <input
-      type="image"
-      alt="submit"
-      src="https://img.icons8.com/color/28/000000/search--v2.png"
-      @click="(e) => onSearch(e)"
-    />
-    <router-link to="/wishlist"
+    <div class="w-5/6 flex">
+      <input
+        v-model="search"
+        type="text"
+        class="w-4/5 sm:w-96 md:w-3/4 outline-none rounded"
+      />
+      <input
+        type="image"
+        alt="submit"
+        src="https://img.icons8.com/color/28/000000/search--v2.png"
+        @click="(e) => onSearch(e)"
+      />
+    </div>
+    <router-link class="mr-3" to="/wishlist" v-if="productStore.windowWidth > 643"
       ><img
-        v-if="productStore.windowWidth > 450"
         src="../../assets/wishlist.png"
         class=""
     /></router-link>
-    <router-link to="/cart"
+    <router-link class="mr-3" to="/cart" v-if="productStore.windowWidth > 643"
       ><img
-        v-if="productStore.windowWidth > 450"
         src="../../assets/cart.png"
         class=""
     /></router-link>
@@ -42,12 +42,6 @@ export default {
   setup() {
     const productStore = store();
     let search = ref("");
-    console.log(productStore);
-    // let windowWidth = ref(window.innerWidth);
-    // window.addEventListener(
-    //   "resize",
-    //   () => (windowWidth.value = window.innerWidth)
-    // );
 
     let onSearch = (e) => {
       e.preventDefault();

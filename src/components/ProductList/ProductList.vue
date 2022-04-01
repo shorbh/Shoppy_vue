@@ -114,7 +114,7 @@ export default {
       if (productStore.favProducts.some((pro) => product.id === pro.id)) {
         productStore.remToFav(product);
       } else {
-        console.log("addfav");
+        // console.log("addfav");
         productStore.addToFav(product);
       }
     };
@@ -129,7 +129,7 @@ export default {
       }
     };
 
-    console.log(productStore);
+    // console.log(productStore);
     return {
       productStore,
       products,
