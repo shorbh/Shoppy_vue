@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="productStore.cartProducts.length"
-    class="flex w-screen flex-col md:flex-row overflow-y-scroll justify-center items-center md:items-start"
+    class="flex w-screen flex-col md:flex-row overflow-y-auto justify-center items-center md:items-start"
   >
     <div class="w-4/5 sm:w-3/5 md:w-2/5 mr-2.5">
       <div

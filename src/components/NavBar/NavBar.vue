@@ -38,15 +38,18 @@
 <script>
 import { ref } from "vue";
 import { store } from "../../stores/store";
+import { useRouter } from 'vue-router';
 export default {
   setup() {
     const productStore = store();
+    const router = useRouter();
     let search = ref("");
 
     let onSearch = (e) => {
       e.preventDefault();
       if (search.value) productStore.searchProduct({ search: search.value });
       else productStore.resetFilterProducts();
+      router.push("/");
     };
 
     return {

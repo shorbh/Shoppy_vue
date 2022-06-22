@@ -1,10 +1,10 @@
 <template>
   <div
-    class="flex flex-row sm:flex-row flex-wrap justify-center sm:justify-evenly m-3"
+    class="w-full flex flex-row sm:flex-row flex-wrap justify-center sm:justify-evenly"
   >
     <template v-if="products.length">
       <template v-for="product in products" :key="product.id">
-        <router-link :to="`/product/${product.id}`" class="w-80 md:w-1/3">
+        <router-link :to="`/product/${product.id}`" class="md:w-1/3" :class="productStore.windowWidth < 300? 'w-64' : 'w-72'">
           <div
             class="p-2.5 m-1 shadow bg-gray-50 relative flex flex-col justify-center items-center"
             :key="product.id"
@@ -72,7 +72,7 @@
         !productStore.filterProducts.length && productStore.productInfo.length
       "
     >
-      <div class="flex flex-col justify-center items-center h-96">
+      <div class="flex flex-col justify-center items-center h-96 w-full">
         <img src="../../assets/nothing-found.png" />
         <p class="text-2xl">Try different search</p>
       </div>
