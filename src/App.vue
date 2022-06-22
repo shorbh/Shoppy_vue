@@ -17,10 +17,15 @@ export default {
   setup() {
     const productStore = store();
     onMounted(() => {
-      console.log("onlkjdfj");
+      let timeoutId;
       window.addEventListener(
         "resize",
-        () => (productStore.windowWidth = window.innerWidth)
+        () => {
+          clearTimeout(timeoutId)
+          timeoutId = setTimeout(() => {
+            productStore.windowWidth = window.innerWidth
+          }, 200)
+        }
       );
 
     });
