@@ -5,7 +5,7 @@ import CartPage from "../views/CartPage.vue";
 import ProductPage from "../views/ProductPage.vue";
 const routes = [
   {
-    path: "/Shoppy_vue",
+    path: "/",
     name: "HomePage",
     component: HomePage,
   },
@@ -27,6 +27,6 @@ const routes = [
 ];
 
 export const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes,
 });
