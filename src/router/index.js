@@ -5,7 +5,7 @@ import CartPage from "../views/CartPage.vue";
 import ProductPage from "../views/ProductPage.vue";
 const routes = [
   {
-    path: "/",
+    path: "/Shoppy_vue",
     name: "HomePage",
     component: HomePage,
   },
