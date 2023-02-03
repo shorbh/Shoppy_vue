@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/Shoppy_vue/sw.js', { scope: '/Shoppy_vue/' })})}
