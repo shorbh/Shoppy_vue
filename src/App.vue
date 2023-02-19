@@ -1,12 +1,5 @@
 <template>
-  <template v-if="productStore.productInfo.length">
-    <router-view></router-view>
-  </template>
-  <template v-else>
-    <div class="h-screen w-screen flex justify-center items-center text-3xl">
-      Loading...
-    </div>
-  </template>
+  <router-view></router-view>
 </template>
 
 <script>
