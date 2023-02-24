@@ -14,6 +14,7 @@
                 <!-- <p v-if="formFields.error">{{ formFields.error }}</p> -->
                 <button type="submit" class="border border-black">Sign Up</button>
                 <p v-if="formFields.error" class="text-red-500">{{formFields.error}}</p>
+                <p class="text-gray-500">Already had a acoount <span class="text-purple-600"><RouterLink :to="{name: 'Signin'}"> Sign In</RouterLink></span></p>
             </form>
         </div>
     </div>
@@ -21,32 +22,28 @@
  
 <script>
 import {ref, reactive} from 'vue'
-import {useFirebaseAuth, useCurrentUser, getCurrentUser} from 'vuefire'
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import { useRouter } from 'vue-router'
 export default {
     setup(){
-        const auth = useFirebaseAuth()
-        // console.log(auth)
+        const router = useRouter()
         const formFields = reactive({
             email: '',
             password: '',
             error: ''
         })
+
         
         async function signUp() {
             try {
-                const obj = await createUserWithEmailAndPassword(getAuth(), formFields.email, formFields.password);
-                console.log(obj);
-                const user = await getCurrentUser();
-                console.log(user)
+                const auth = getAuth();
+                await createUserWithEmailAndPassword(auth, formFields.email, formFields.password);
                 formFields.error = ''
-                // console.log(user.sendEmailVerification)
-                await user.sendEmailVerification();
+                await sendEmailVerification(auth.currentUser);
 
-                this.$router.push('/');
+                router.push('/');
             } catch(err) {
                 formFields.error = err.message
-                console.log(err)
             }
         }
 

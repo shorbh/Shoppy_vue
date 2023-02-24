@@ -14,6 +14,7 @@
                 <!-- <p v-if="formFields.error">{{ formFields.error }}</p> -->
                 <button type="submit" class="border border-black">Sign In</button>
                 <p v-if="formFields.error" class="text-red-500">{{formFields.error}}</p>
+                <p class="text-gray-500">Create a acoount <span class="text-purple-600"><RouterLink :to="{name: 'Signup'}"> Sign Up</RouterLink></span></p>
             </form>
         </div>
     </div>
