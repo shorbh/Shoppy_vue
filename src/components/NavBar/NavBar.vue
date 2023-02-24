@@ -1,5 +1,5 @@
 <template>
-  <div class="z-10 sticky top-0 bg-purple-600 h-12 p-2.5 flex justify-between">
+  <div class="z-10 sticky top-0 bg-purple-600 h-12 p-2.5 flex">
     <img
       v-if="productStore.windowWidth <= 643"
       src="../../assets/menu.png"
@@ -9,7 +9,7 @@
     <router-link to="/"
       ><p class="mr-1 text-2xl" v-if="productStore.windowWidth > 643">eshop</p></router-link
     >
-    <div class="w-5/6 flex">
+    <div class="flex flex-grow">
       <input
         v-model="search"
         type="text"
@@ -32,6 +32,7 @@
         src="../../assets/cart.png"
         class=""
     /></router-link>
+    <button class="border px-2 rounded-md active:bg-white" @click="handleLogout">Log out</button>
   </div>
 </template>
 
@@ -39,6 +40,7 @@
 import { ref } from "vue";
 import { store } from "../../stores/store";
 import { useRouter } from 'vue-router';
+import { signOut, getAuth } from "firebase/auth";
 export default {
   setup() {
     const productStore = store();
@@ -52,10 +54,22 @@ export default {
       router.push("/");
     };
 
+    let handleLogout = async () => {
+      const auth = getAuth();
+      try {
+        await signOut(auth)
+        router.push('/login')
+      } catch(error)
+      {
+        console.log(error)
+      }
+    }
+
     return {
       productStore,
       search,
       onSearch,
+      handleLogout
     };
   },
 };
